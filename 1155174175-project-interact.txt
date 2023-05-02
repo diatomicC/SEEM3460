@@ -1,0 +1,55 @@
+Script started on Friday, April 28, 2023 PM04:38:29 HKT
+sepc92:/uac/std/y22/jhur2/proj1[21]> cat makefile
+CFLAGS = `pkg-config --cflags gtk+-3.0`
+LIBS = `pkg-config --libs gtk+-3.0`
+
+all: main
+
+main.o: main.c
+	gcc $(CFLAGS) -c main.c
+
+highlow.o: highlow.c
+	gcc $(CFLAGS) -c highlow.c
+
+gui.o: gui.c
+	gcc $(CFLAGS) -c gui.c
+
+main: main.o highlow.o gui.o
+	gcc -o main main.o highlow.o gui.o $(LIBS)
+
+clean:
+	rm -f main *.o
+sepc92:/uac/std/y22/jhur2/proj1[22]> make
+gcc `pkg-config --cflags gtk+-3.0` -c main.c
+gcc `pkg-config --cflags gtk+-3.0` -c highlow.c
+gcc `pkg-config --cflags gtk+-3.0` -c gui.c
+gcc -o main main.o highlow.o gui.o `pkg-config --libs gtk+-3.0`
+sepc92:/uac/std/y22/jhur2/proj1[23]> ./main
+New game initialized.
+North chose "Higher" and lost 5 points.
+South chose "Lower" and lost 5 points.
+North chose "Lower" and gained 10 points.
+South chose "Lower" and lost 5 points.
+North chose "Higher" and lost 5 points.
+South chose "Higher" and gained 10 points.
+North peeked a hint.
+North chose "Lower" and gained 10 points.
+South chose "Higher" and gained 10 points.
+North chose "Lower" and gained 10 points.
+South gave up and cheated.
+South chose "Lower" and lost 5 points.
+North chose "Higher" and lost 5 points.
+South chose "Higher" and lost 5 points.
+North chose "Lower" and lost 5 points.
+South chose "Lower" and gained 10 points.
+North chose "Higher" and gained 10 points.
+South chose "Higher" and lost 5 points.
+North chose "Higher" and gained 10 points.
+South chose "Lower" and lost 5 points.
+Game ended. North wins.
+Game terminated.
+sepc92:/uac/std/y22/jhur2/proj1[24]> time
+2.061u 0.376s 2:11.15 1.8%	0+0k 56+208io 1pf+0w
+sepc92:/uac/std/y22/jhur2/proj1[25]> ^Dexit
+
+Script done on Friday, April 28, 2023 PM04:40:41 HKT
